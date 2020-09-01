@@ -1,7 +1,7 @@
 Name:    cups
 Epoch:   1
 Version: 2.2.13
-Release: 2
+Release: 3
 Summary: CUPS is the standards-based, open source printing system for linux operating systems.
 License: GPLv2+ and LGPLv2+ with exceptions and AML
 Url:     http://www.cups.org/
@@ -33,6 +33,7 @@ Patch18: cups-lpr-help.patch
 Patch19: cups-filter-debug.patch
 Patch20: cups-dymo-deviceid.patch
 Patch21: custom-option-keywords-did-not.patch
+Patch22: CVE-2020-3898.patch
 
 Provides: cupsddk cupsddk-drivers cups-filesystem cups-client cups-ipptool cups-lpd
 Provides: lpd lpr /usr/bin/lpq /usr/bin/lpr /usr/bin/lp /usr/bin/cancel /usr/bin/lprm /usr/bin/lpstat
@@ -325,6 +326,12 @@ rm -f %{_exec_prefix}/lib/cups/backend/smb
 %doc %{_datadir}/%{name}/www/apple-touch-icon.png
 
 %changelog
+* Tue Sep 1 2020 zhaowei <zhaowei23@huawei.com> 2.2.13-3
+- Type:CVE
+- ID:CVE-2020-3898
+- SUG:NA
+- DESC:fix CVE-2020-3898
+
 * Tue Aug 18 2020 chenyaqiang <chenyaqiang@huawei.com> 2.2.13-2
 - Type:rebuild
 - ID:NA
