@@ -1,0 +1,27 @@
+diff --git a/config-scripts/cups-defaults.m4 b/config-scripts/cups-defaults.m4
+index b3d96ef0a..517539e1f 100644
+--- a/config-scripts/cups-defaults.m4
++++ b/config-scripts/cups-defaults.m4
+@@ -245,7 +245,7 @@ AC_ARG_WITH(system_groups, [  --with-system-groups    set default system groups
+ 		AC_MSG_CHECKING(for default system groups)
+ 		if test -f /etc/group; then
+ 			CUPS_SYSTEM_GROUPS=""
+-			GROUP_LIST="lpadmin sys system root"
++			GROUP_LIST="lpadmin sys system root wheel"
+ 			for group in $GROUP_LIST; do
+ 				if test "`grep \^${group}: /etc/group`" != ""; then
+ 					if test "x$CUPS_SYSTEM_GROUPS" = x; then
+diff --git a/configure b/configure
+index 18be3db75..d3df145bc 100755
+--- a/configure
++++ b/configure
+@@ -9601,7 +9601,7 @@ else
+ $as_echo_n "checking for default system groups... " >&6; }
+ 		if test -f /etc/group; then
+ 			CUPS_SYSTEM_GROUPS=""
+-			GROUP_LIST="lpadmin sys system root"
++			GROUP_LIST="lpadmin sys system root wheel"
+ 			for group in $GROUP_LIST; do
+ 				if test "`grep \^${group}: /etc/group`" != ""; then
+ 					if test "x$CUPS_SYSTEM_GROUPS" = x; then
+

@@ -2,7 +2,7 @@
 Name:    cups
 Epoch:   1
 Version: 2.3.3
-Release: 3
+Release: 4
 Summary: CUPS is the standards-based, open source printing system for linux operating systems.
 License: GPLv2+ and LGPLv2+ with exceptions and AML
 Url:     http://www.cups.org/
@@ -43,6 +43,7 @@ Patch27: cups-etimedout.patch
 Patch28: cups-webui-uri.patch
 Patch29: cups-ipptool-mdns-uri.patch 
 Patch30: cups-manual-copies.patch 
+Patch31: cups-add-wheel-to-system-groups.patch
 
 Provides: cupsddk cupsddk-drivers cups-filesystem cups-client cups-ipptool cups-lpd 
 Provides: lpd lpr /usr/bin/lpq /usr/bin/lpr /usr/bin/lp /usr/bin/cancel /usr/bin/lprm /usr/bin/lpstat
@@ -334,6 +335,12 @@ rm -f %{_exec_prefix}/lib/cups/backend/smb
 %doc %{_datadir}/%{name}/www/apple-touch-icon.png
 
 %changelog
+* Wed May 12 2021 guoqinglan <guoqinglan@uniontech.com> - 2.3.3-4
+- Type:bugfix
+- ID:NA
+- SUG:restart
+- DESC:Add wheel to /etc/cups/cups-files.conf SystemGroup
+
 * Tue Sep 29 2020 hanhui <hanhui15@huawei.com> - 2.3.3-3
 - Type:bugfix
 - ID:NA
