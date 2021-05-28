@@ -1,7 +1,7 @@
 Name:    cups
 Epoch:   1
 Version: 2.2.13
-Release: 5
+Release: 6
 Summary: CUPS is the standards-based, open source printing system for linux operating systems.
 License: GPLv2+ and LGPLv2+ with exceptions and AML
 Url:     http://www.cups.org/
@@ -9,7 +9,6 @@ Source0: https://github.com/apple/cups/releases/download/v%{VERSION}/cups-%{VERS
 
 Source2: cupsprinter.png
 Source3: cups.logrotate
-Source4: ncp.backend
 Source5: macros.cups
 
 Patch1:  cups-no-gzip-man.patch
@@ -143,7 +142,6 @@ install -d ${RPM_BUILD_ROOT}%{_datadir}/pixmaps ${RPM_BUILD_ROOT}%{_sysconfdir}/
            ${RPM_BUILD_ROOT}%{_rpmconfigdir}/macros.d
 install -p -m 644 %{SOURCE2} ${RPM_BUILD_ROOT}%{_datadir}/pixmaps
 install -p -m 644 %{SOURCE3} ${RPM_BUILD_ROOT}%{_sysconfdir}/logrotate.d/cups
-install -p -m 755 %{SOURCE4} ${RPM_BUILD_ROOT}%{_exec_prefix}/lib/cups/backend/ncp
 install -m 0644 %{SOURCE5} ${RPM_BUILD_ROOT}%{_rpmconfigdir}/macros.d
 
 touch ${RPM_BUILD_ROOT}%{_sysconfdir}/cups/{printers,classes,client,subscriptions}.conf
@@ -327,11 +325,14 @@ rm -f %{_exec_prefix}/lib/cups/backend/smb
 %doc %{_datadir}/%{name}/www/apple-touch-icon.png
 
 %changelog
-* Wed May 12 2021 guoqinglan <guoqinglan@uniontech.com> - 2.2.13-5
+* Wed May 26 2021 guoqinglan <guoqinglan@uniontech.com> - 2.2.13-6
 - Type:bugfix
 - ID:NA
 - SUG:restart
 - DESC:Add wheel to /etc/cups/cups-files.conf SystemGroup
+
+* Mon May 24 2021 liuyumeng <liuyumeng@huawei.com> 2.2.13-5
+- remove unused ncp backend
 
 * Thu Apr 29 2021 liuyumeng <liuyumeng@huawei.com> 2.2.13-4
 - Type:bugfix
